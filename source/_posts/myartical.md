@@ -16,7 +16,7 @@ vue中使用到的路由插件是vue-router。它是vue官方路由插件，依�
 首先我们第一步引入：
 router/index.js文件中：
 
-```js
+```javascript
 import VueRoutes from './routes/VueRoutes.js'
 Vue.use(VueRoutes);
 ..........
@@ -30,7 +30,7 @@ let routers = new VueRoutes({
 install.js文件中
 ---
 
-```js
+```javascript
 import routerView from "./view.js"
 import routerLink from "./viewLink.js"
 export default function install(Vue) {
@@ -69,7 +69,6 @@ export default function install(Vue) {
   );
 }
 ```
-
 我们可以知道install主要做了
 1. 利用mixin之后在每个组件中混入该`beforeCreate`生命周期
 2. 生命周期中对根组件进行设置私有属性`_rootRouter，_router`
@@ -81,7 +80,7 @@ routes目录下
 ---
 ### index.js文件中
 
-```js
+```javascript
 export default function VueRoutes(options) {
   // 返回一个pathlist表示路由数组，与路由映射表 pathMap
   this.matcher = createMatcher(options || []);
@@ -117,7 +116,7 @@ VueRouters.install = install;
 
 ### createMatcher.js
 （1）
-```js
+```javascript
 export default function createMatcher(options) {
   // 返回路径的列表, 路径和路由对象的映射
   var {
@@ -152,13 +151,13 @@ export default function createMatcher(options) {
 
 }
 
-```
+```javascript
 
 在`createMatcher`中，传入`routes`，之后计算出`pathList，pathMap`。我们来看下`createRouteMap`实现
 
 ### createRouteMap.js
 
-```js
+```javascript
 export default function createRouteMap(routes, pathList, pathMap) {
   // 处理routes中的路由映射
   pathList = pathList ? pathList : [];
@@ -178,7 +177,7 @@ export default function createRouteMap(routes, pathList, pathMap) {
 
 看下addRoutesRecord的实现：
 
-```js
+```javascript
 function addRoutesRecord(routes, pathList, pathMap, parent) {
   let path
   //parent是当遍历的是chilren中的路由才有的parent
@@ -209,7 +208,7 @@ function addRoutesRecord(routes, pathList, pathMap, parent) {
 ```
 routes有children情况下，会继续执行`addRoutesRecord`，继续添加到`pathList，pathaMap`中。变成一维数组吧。转化请看下面，还会有parent，之后会在路由变化，router-view重新生成`render`中用到。
 
-```js
+```javascript
 const routes = [{
     path: '/',
     name: 'Home',
@@ -247,7 +246,7 @@ const routes = [{
 
 看下HashHistory
 
-```js
+```javascript
 export default class HASHHistory extends BaseHistory {
   constructor(app) {
       super(app);
@@ -270,7 +269,7 @@ export default class HASHHistory extends BaseHistory {
 
 BaseHistory类中：
 
-```js
+```javascript
   // 跳转的核心逻辑location 
   this.transitionTo=function(location, oncomplete) {
     let routes=this.router.match(location);
@@ -293,7 +292,7 @@ BaseHistory类中：
 
 （3）看下init，在vueRoutes构造函数中
 
-```js
+```javascript
 this.init=function(app){
     let setlister = function (_that) {
       _that.history.setlister();
@@ -311,7 +310,7 @@ this.init=function(app){
 
 router-view是一个全局组件，它的实现是一个函数式渲染
 
-```js
+```javascript
 export default {
   functional: true,
   render(h, {
