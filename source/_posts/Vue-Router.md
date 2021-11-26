@@ -1,5 +1,8 @@
 ---
-title: 实现一个Vue-router插件
+title: Vue-Router源码解析
+date: 2020-01-01 00:00:00
+category: "Vue源码"
+tags: Vue
 ---
 
 # 前言

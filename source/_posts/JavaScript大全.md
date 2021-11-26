@@ -3,11 +3,21 @@ title: JavaScript导航图
 date: 2020-01-01 00:00:00
 category:  
   - "JavaScript大全"
+tags: JavaScript
 ---
 
-### 1.实现一个Promise，aysnc，await你会嘛？能实现到多少。
+# js基础（！important）
+
+### 1.实现一个Promise，aysnc，await实现原理
+
+
 ### 2.Vue3中使用到的ES6中Proxy,Map,Set以及以下api语法
+
 ### 3.ES中更为常见的语法汇总~
+
+### 4.基本类型的辨别，差异。
+
+
 
 
 
