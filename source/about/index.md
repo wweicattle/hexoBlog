@@ -1,7 +1,12 @@
 ---
 title: about
-date: 2021-11-21 15:56:26
-time: 2021-12-10 08:00:00
+date: 2019-08-10 16:41:10
+type: "about"
+layout: "about"
 ---
-### this is about me page!
+
+
+
+
+
 
