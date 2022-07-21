@@ -182,7 +182,7 @@ export default WWTest
 在异步任务中执行会是异步输出 37 38 39
 
 ```
-说明：为了保证state中的值是正确的，后做一些操作我们应该放在setState的第二个形参handler中,看下图：
+重点说明：为了保证state中的值是正确的，后做一些操作我们应该放在setState的第二个形参handler中,看下图：
 
 this.setState(({}),handler)
 
@@ -225,7 +225,7 @@ class WWTest extends React.Component {
   render(prop) {
     return (
       <div className="contain">
-        类组件页面：
+        类组件页面：PropProp
         <div>this is content！</div>
         <div onClick={this.handlerCommit.bind(this)}>hanlderCommit</div>
         <div onClick={() => this.handlerCommitOne()}>hanlderCommitOne</div>
@@ -268,3 +268,45 @@ export default WWTest
 ```
 
 通过上文可以发现获取一个 dom 元素，`this.curref=React.createRef()` 再用于 dom 元素上
+
+props 属性的验证：
+
+```js
+import React from "react"
+import kerwinPropsTypes from "prop-types"
+
+class WWTest extends React.Component {
+  constructor() {
+    super()
+  }
+  // 设置booleaNum必须为布尔值
+  static propTypes = {
+    booleaNum: kerwinPropsTypes.bool,
+  }
+  // 默认prop属性值
+  static defaultProps = {
+    wuwei: 1111,
+  }
+  render(prop) {
+    return <div className="contain"></div>
+  }
+}
+
+export default WWTest
+```
+
+> 通过上文我们可以发现，为了限制 prop 的类型的时候我们可以使用 `kerwinPropTypes` 进行校验
+
+
+>注意⚠️：一个小技巧 `this.state` 可以在子组件中进行{...this.state}
+
+
+`Prop与State的区别`：
+Prop是父组件传进来，可以设置默认值，不可以修改
+State是组件自身状态，不可以在外部修改，尽量多写一些无状态的组件，也是方便后续的复用
+
+
+## 表单的受控与非受控
+
+
+  
