@@ -27,14 +27,15 @@ UNSAFE_componentWillUpdate
 > 注意 ⚠️ 当然你同时修改的多个 state 中的状态时，只会执行一次 componentWillUpdate
 
 5. componentDidUpdate
-   更新之后
+   更新之后 形参是老的props 和state
 
 如果修改 state 的值的话，会执行 componentWillUpdate->render->componentDidUpdate
 
 > 注意 ⚠️ 不要在 render 进行修改状态 state 中的属性，会有错误 （无限循环调用）
 
-6.shouldComponentUpdate 是否当 state 发生变化需要 render 和 update
+6.shouldComponentUpdate 是否当 state 发生变化需要执行 render 和 update
 
+在这个生命周期中 形参，参数得到的值时最新的props值
 > 形参 a=>代表修改的值（注意是修改后的值） ，此时再根据判断是否要更新 render 渲染函数
 
 ```js
@@ -115,3 +116,15 @@ export default WWTest
 
 
 注意⚠️：当你修改响应state的值时，最终修改后的 值 只能可以在 render中和生命周期`componentDidUpdate`中取到
+
+7.UNSAFE_componentWillUpdate 当父组件传过来的props时发生变化时触发。
+
+8.UNSAFE_componentWillReceiveProps 当父组件把prop的值传过来的时候，就会立即执行一次，等到props 值发生变化就会再次执行
+
+9.getDerivedStateFromProps 父组件中传入子组件中，一开始就会执行，等到state。
+
+10.getSnapshotBeforeUpdate 该生命周期是render与update之中的执行的 ，可以在该声明周期中获取旧的dom
+
+11.优化生命周期
+shouldComponentUpdate和PureComponent （state如果一定变化就不用这个生命周期，shallowUpdate也要花时间）
+12.
